@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Webpage</title>
+    <style>
+        body {
+            background-color: #282c34;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+
+            /* Add a background gradient */
+            background: linear-gradient(to bottom, #ffefba, #ffffff);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            animation: typing 2s steps(30, end);
+            border-right: 2px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        .heart {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            from { transform: translateX(-50%) translateY(-100%); }
+            to { transform: translateX(-50%) translateY(100vh); }
+        }
+        /* Star twinkling effect */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 20px white;
+            animation: twinkle 1.5s infinite;
+        }
+        @keyframes twinkle {
+            0%, 20%, 100% { opacity: 0.5; }
+            10%, 50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>I Love You Ludmina!</h1>
+    <div id="heart-container"></div>
+    <script>
+        // Creating falling hearts
+        const heartContainer = document.getElementById('heart-container');
+        for (let i = 0; i < 10; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heartContainer.appendChild(heart);
+        }
+
+        // Creating twinkling stars
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            heartContainer.appendChild(star);
+        }
+
+        // Password protection
+        const password = "01022026";
+        let userPassword = prompt("Please enter the password:");
+        if (userPassword !== password) {
+            alert('Access Denied!');
+            window.location.href = 'about:blank';
+        }
+    </script>
+</body>
+</html>
